@@ -111,20 +111,7 @@ public class VisorFicherosGuarController {
         ObservableList<Node> childs = vBoxListFiles.getChildren();
         if (listFilesLV == null) {
             listFilesLV = new ListView();
-            listFilesLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    try {
-                        String selected = listFilesLV.getSelectionModel().getSelectedItem().toString();
-                        String newAbsPath = currentAbsPAth + File.separator + selected;
-
-                        filenameTF.setText(newAbsPath);
-                        goPath(newAbsPath);
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-            });
+                /*public void handle(MouseEvent mouseEvent) */
             childs.add(listFilesLV);
         } else{
             listFilesLV.getItems().clear();
@@ -153,6 +140,20 @@ public class VisorFicherosGuarController {
             Path pathOrigen=Paths.get(path).toAbsolutePath().getParent();
             goPath(pathOrigen.toString());
             filenameTF.setText(pathOrigen.toString());
+        }
+    }
+
+    public void onGoButtonAction(ActionEvent actionEvent) {
+        {
+            try {
+                String selected = listFilesLV.getSelectionModel().getSelectedItem().toString();
+                String newAbsPath = currentAbsPAth + File.separator + selected;
+
+                filenameTF.setText(newAbsPath);
+                goPath(newAbsPath);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
