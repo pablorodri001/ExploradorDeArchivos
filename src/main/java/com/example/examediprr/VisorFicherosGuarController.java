@@ -111,7 +111,19 @@ public class VisorFicherosGuarController {
         ObservableList<Node> childs = vBoxListFiles.getChildren();
         if (listFilesLV == null) {
             listFilesLV = new ListView();
-                /*public void handle(MouseEvent mouseEvent) */
+            listFilesLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                              @Override
+                                              public void handle(MouseEvent mouseEvent) {
+                                                  String selected = listFilesLV.getSelectionModel().getSelectedItem().toString();
+                                                  String newAbsPath = currentAbsPAth + File.separator + selected;
+                                                  File seleccionado=new File(newAbsPath.trim());
+                                                  try {
+                                                      refreshInfo(seleccionado);
+                                                  } catch (Exception e) {
+                                                      e.getMessage();
+                                                  }
+                                              }
+                                          });
             childs.add(listFilesLV);
         } else{
             listFilesLV.getItems().clear();
