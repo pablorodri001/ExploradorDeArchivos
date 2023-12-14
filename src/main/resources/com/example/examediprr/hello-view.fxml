@@ -3,14 +3,48 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Separator?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.examediprr.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
+    <HBox alignment="CENTER" spacing="20.0">
+        <Label text="Ficheiro: "/>
+        <TextField fx:id="filenameTF" minWidth="100" maxWidth="500" prefWidth="400" onAction="#onGoButton"/>
+        <Button text="Go" onAction="#onGoButton"/>
+    </HBox>
+    <Separator />
+    <VBox>
+        <Button fx:id="Homedirectory"></Button>
+        <Button fx:id="fav1"></Button>
+        <Button fx:id="fav2"></Button>
+        <Button fx:id="fav3"></Button>
+    </VBox>
+    <HBox alignment="CENTER" spacing="20.0">
+        <VBox fx:id="vBoxListFiles" spacing="20.0"  minWidth="400" prefWidth="400" maxWidth="500">
+            <Label  text="Lista de ficheiros" textFill="blue"/>
+            <Separator />
+            <Label fx:id="feedbackL" textFill="red" />
+        </VBox>
+        <VBox spacing="20.0" maxWidth="350">
+            <Label text="Tipo:" textFill="blue"/>
+            <Label fx:id="type" textFill="darkgrey" text="type of the file"/>
+            <Label text="Path: " textFill="blue"/>
+            <Label fx:id="pathL" textFill="darkgray" text="absolute path to the file" wrapText="true"/>
+            <Label text="Size: " textFill="blue"/>
+            <Label fx:id="size" textFill="darkgray" text="size:"/>
+            <Label text="numeroFicheros: " textFill="blue"/>
+            <Label fx:id="numberFiles" textFill="darkgray" text="numberFiles:"/>
+            <HBox spacing="20.0" maxWidth="350"> <Button fx:id="likeFile" text="heart"></Button>
+                <Button fx:id="goFile" text="go"></Button>
+            </HBox>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+        </VBox>
+    </HBox>
+
 </VBox>
