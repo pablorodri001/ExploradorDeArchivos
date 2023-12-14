@@ -10,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,9 +41,6 @@ public class VisorFicherosGuarController {
     }private void refreshInfo(File file) throws IOException {
         if (file.exists()) {
             pathL.setText(file.getAbsolutePath());
-            if(!file.isDirectory()){
-                size.setText(Long.toString(Files.size(file.toPath())));
-            }
             if(file.isDirectory()){
                 try (Stream<Path> files = Files.list(Paths.get(file.getAbsolutePath()))) {
                     long count = files.count();
@@ -67,8 +65,18 @@ public class VisorFicherosGuarController {
                 }
 
             }
+            type.setText(cogerElTipoFichero(file));
 
 
+        }
+    }
+
+    private String cogerElTipoFichero(File file) {
+        if (file.isDirectory()){
+            return "Carpeta";
+        }
+        else{
+            return FilenameUtils.getExtension(file.getAbsolutePath());
         }
     }
 
