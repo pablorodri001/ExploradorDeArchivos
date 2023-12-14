@@ -10,7 +10,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class HelloController {
+public class VisorFicherosGuarController {
     public TextField filenameTF;
     public Label pathL;
     public Label type;
@@ -56,9 +55,27 @@ public class HelloController {
             else{
                 numberFiles.setText("---");
             }
+            if (!file.exists() || !file.isFile() || file.isDirectory()){
+                size.setText("---");
+            }
+            else{
+                if(getFileSizeMegaBytes(file).isEmpty()){
+                    size.setText("---");
+                }
+                else{
+                    size.setText(getFileSizeMegaBytes(file));
+                }
 
             }
+
+
+        }
     }
+
+    private static String getFileSizeMegaBytes(File file) {
+        return (double) file.length() / (1024 * 1024) + " mb";
+    }
+
     public void goPath(String path) throws IOException {
         listFiles = new ArrayList<>();
 

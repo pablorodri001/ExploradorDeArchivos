@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Separator?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.examediprr.HelloController">
+      fx:controller="com.example.examediprr.VisorFicherosGuarController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
@@ -37,7 +37,7 @@
             <Label text="Ruta absoluta: " textFill="blue"/>
             <Label fx:id="pathL" textFill="darkgray" wrapText="true"/>
             <Label text="Size: " textFill="blue"/>
-            <Label fx:id="Tamaño" textFill="darkgray" text="size:"/>
+            <Label fx:id="size" textFill="darkgray" text="Tamaño:"/>
             <Label text="numeroFicheros: " textFill="blue"/>
             <Label fx:id="numberFiles" textFill="darkgray" text="numberFiles:"/>
             <HBox spacing="20.0" maxWidth="350"> <Button fx:id="likeFile" text="heart"></Button>
