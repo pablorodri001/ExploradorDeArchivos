@@ -13,8 +13,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class HelloController {
     public TextField filenameTF;
@@ -28,18 +33,33 @@ public class HelloController {
     ListView listFilesLV = null;
     List<String> listFiles = null;
     @FXML
-    public void onGoButton(ActionEvent actionEvent) {
+    public void onGoButton(ActionEvent actionEvent) throws IOException {
         if (filenameTF.getText().trim().isEmpty()){
             return;
         }
         goPath(filenameTF.getText());
-    }private void refreshInfo(File file) {
+    }private void refreshInfo(File file) throws IOException {
         if (file.exists()) {
             pathL.setText(file.getAbsolutePath());
+            if(!file.isDirectory()){
+                size.setText(Long.toString(Files.size(file.toPath())));
+            }
+            if(file.isDirectory()){
+                try (Stream<Path> files = Files.list(Paths.get(file.getAbsolutePath()))) {
+                    long count = files.count();
+                    numberFiles.setText(Long.toString(count));
+                }
+                catch (Exception e){
+                    e.getMessage();
+                }
+            }
+            else{
+                numberFiles.setText("---");
+            }
 
             }
     }
-    public void goPath(String path){
+    public void goPath(String path) throws IOException {
         listFiles = new ArrayList<>();
 
         File newFile = new File(path.trim());
