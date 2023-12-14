@@ -38,6 +38,7 @@ public class VisorFicherosGuarController {
             return;
         }
         goPath(filenameTF.getText());
+
     }private void refreshInfo(File file) throws IOException {
         if (file.exists()) {
             pathL.setText(file.getAbsolutePath());
@@ -134,5 +135,24 @@ public class VisorFicherosGuarController {
         }
 
 
+    }
+
+    public void OnRegresarButtonClick(ActionEvent actionEvent) throws IOException {
+        if (filenameTF.getText().trim().isEmpty()){
+            return;
+        }
+        else{
+            goBack(filenameTF.getText());
+        }
+
+    }
+
+    private void goBack(String path) throws IOException {
+        File ficheroActual= new File(path.trim());
+        if(ficheroActual.exists()){
+            Path pathOrigen=Paths.get(path).toAbsolutePath().getParent();
+            goPath(pathOrigen.toString());
+            filenameTF.setText(pathOrigen.toString());
+        }
     }
 }
