@@ -34,10 +34,10 @@
         <VBox spacing="20.0" maxWidth="350">
             <Label text="Tipo:" textFill="blue"/>
             <Label fx:id="type" textFill="darkgrey" text="type of the file"/>
-            <Label text="Path: " textFill="blue"/>
-            <Label fx:id="pathL" textFill="darkgray" text="absolute path to the file" wrapText="true"/>
+            <Label text="Ruta absoluta: " textFill="blue"/>
+            <Label fx:id="pathL" textFill="darkgray" wrapText="true"/>
             <Label text="Size: " textFill="blue"/>
-            <Label fx:id="size" textFill="darkgray" text="size:"/>
+            <Label fx:id="Tamaño" textFill="darkgray" text="size:"/>
             <Label text="numeroFicheros: " textFill="blue"/>
             <Label fx:id="numberFiles" textFill="darkgray" text="numberFiles:"/>
             <HBox spacing="20.0" maxWidth="350"> <Button fx:id="likeFile" text="heart"></Button>

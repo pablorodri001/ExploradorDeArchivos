@@ -10,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -32,6 +33,11 @@ public class HelloController {
             return;
         }
         goPath(filenameTF.getText());
+    }private void refreshInfo(File file) {
+        if (file.exists()) {
+            pathL.setText(file.getAbsolutePath());
+
+            }
     }
     public void goPath(String path){
         listFiles = new ArrayList<>();
@@ -52,6 +58,7 @@ public class HelloController {
                 }
             }
         }
+        refreshInfo(newFile);
         fillListFiles(listFiles);
     }
     private void fillListFiles(List<String> listFiles) {
