@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -28,8 +29,10 @@ public class VisorFicherosGuarController {
     public Label size;
     public Label numberFiles;
     public VBox vBoxListFiles;
+    public Button Homedirectory;
     private String currentAbsPAth = "";
     public Label feedbackL;
+    public String homeDirectory;
     ListView listFilesLV = null;
     List<String> listFiles = null;
     @FXML
@@ -77,6 +80,7 @@ public class VisorFicherosGuarController {
             return "Carpeta";
         }
         else{
+            //esto devuelve el tipo de fichero que es.
             return FilenameUtils.getExtension(file.getAbsolutePath());
         }
     }
@@ -87,7 +91,6 @@ public class VisorFicherosGuarController {
 
     public void goPath(String path) throws IOException {
         listFiles = new ArrayList<>();
-
         File newFile = new File(path.trim());
 
         if (newFile.exists()) {
@@ -121,6 +124,7 @@ public class VisorFicherosGuarController {
                                                       refreshInfo(seleccionado);
                                                   } catch (Exception e) {
                                                       e.getMessage();
+                                                      
                                                   }
                                               }
                                           });
@@ -167,5 +171,14 @@ public class VisorFicherosGuarController {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public void onHomeMasterClick(ActionEvent actionEvent) {
+       homeDirectory=filenameTF.getText().trim();
+    }
+
+    public void irAlHome(ActionEvent actionEvent) throws IOException {
+        goPath(homeDirectory);
+        filenameTF.setText(homeDirectory);
     }
 }
