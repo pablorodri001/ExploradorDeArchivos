@@ -1,6 +1,6 @@
 # ExploradorDeArchivos
 
-![JavaFX Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/JavaFX_Logo.png/120px-JavaFX_Logo.png)
+
 
 **File Explorer** es una aplicación de escritorio para la navegación y gestión de archivos en tu sistema operativo, construida utilizando JavaFX y Java.
 
